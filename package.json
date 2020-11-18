@@ -1,0 +1,33 @@
+{
+  "name": "backend-sistemaf",
+  "version": "1.0.0",
+  "description": "Rest Api Sistema de venta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "Kevin Acevedo",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-mysql-session": "^2.0.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^5.3.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

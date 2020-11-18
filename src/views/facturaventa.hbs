@@ -1,0 +1,65 @@
+<div class="container mx-auto p-2">
+    <hr>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="# Documento" name="id_cliente"
+                value="{{factura.id_cliente}}" disabled>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col text-right">
+                    <label for="exampleId"># Factura</label>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="id_factura" placeholder="id" value="FN-{{factura.id}}"
+                        disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <table class="table p-2">
+        <thead class="thead-dark p-2">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Costo</th>
+            </tr>
+        </thead>
+        <tbody id="productos">
+
+            {{#each conceptos}}
+            <tr id="producto">
+                <th scope="row">{{@index}}</th>
+                <td>{{this.nombre}}</td>
+                <td>$ {{this.preciounitario}}</td>
+                <td>{{this.cantidad}}</td>
+                <td>$ {{this.importe}}</td>
+            </tr>
+
+            {{/each}}
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="4">Total</th>
+                <td class="bg-primary">$ {{factura.total}}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <hr>
+    {{#if isvalido}}
+        <button class="btn btn-success btn-block" disabled>Pagado</button>
+        <a href="/facturas" class="btn btn-block btn-secondary">Volver</a>
+    {{else}}
+        <a class="btn btn-success btn-block" href="/facturas/validado/{{factura.id}}">Pagar</a>
+    {{/if}}
+    
+
+</div>

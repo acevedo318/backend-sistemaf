@@ -1,0 +1,71 @@
+<table class="table table-dark">
+    <tbody>
+        <tr>
+            <th scope="row"></th>
+            <td class="text-left"><b>Facturas</b></td>
+            <td></td>
+            <td class="text-right"><a href="/facturas/add" class="btn btn-primary">Crear factura</a></td>
+            <td class="text-right"><a href="/impresionesvalidas" class="btn btn-primary">Imprimir informe</a></td>
+        </tr>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id_cliente</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Total</th>
+            <th scope="col">Ver</th>
+            <th scope="col">Aprobación</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {{#each facturas}}
+        <tr>
+            <th scope="row">{{this.id}}</th>
+            <td>{{this.id_cliente}}</td>
+            <td>{{timeago this.fecha}}</td>
+            <td>$ <input type="number" id="sum" value="{{this.total}}" disabled></td>
+            <td><a href="/facturas/validar/{{this.id}}" class="btn btn-primary">Ver</a></td>
+            {{#if this.isvalido}}
+            <td><a href="/facturas/validar/{{this.id}}" class="btn btn-success">Aprobar</a></td>
+            {{else}}
+            <td><button class="btn btn-success" disabled>Aprovado</button></td>
+            {{/if}}
+
+        </tr>
+        {{/each}}
+    </tbody>
+    {{#if imprimir}}
+    <tfoot>
+        <tr>
+            <th colspan="3">Total del dia</th>
+            <td>$ <input type="number" id="total" value="0" disabled></td>
+
+        </tr>
+    </tfoot>
+    {{/if}}
+</table>
+
+{{#if imprimir}}
+<script>
+
+
+    window.onload = load;
+    function load() {
+
+        let suma = Number(0);
+        const sums = document.querySelectorAll("#sum");
+
+        sums.forEach(element => {
+            suma += Number(element.value);
+        });
+
+        document.querySelector("#total").value = suma;
+
+        print();
+    }
+</script>
+{{/if}}

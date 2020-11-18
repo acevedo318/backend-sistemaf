@@ -1,0 +1,94 @@
+<script src="/js/factura.js"></script>
+<link rel="stylesheet" href="/css/stylesscards.css">
+
+<script>
+    var productosJS = {{{ productosJS }}};
+</script>
+<div class="container mx-auto p-2">
+    <form action="/facturas/add" method="POST">
+
+        <div class="form-row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="# Documento" name="id_cliente" autofocus required>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col text-right">
+                        <label for="exampleId"># Factura</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="id_factura" placeholder="id" value="{{facturaid}}"
+                            readonly>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col text-right">
+                <label for="exampleId">IVA: </label>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="id" value="19%" disabled>
+            </div>
+        </div>
+
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio Unitario</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Costo</th>
+                </tr>
+            </thead>
+            <tbody id="productos">
+                <tr id="producto">
+                    <th scope="row">
+                        <select class="form-control" id="exampleFormControlSelect1" name="id"
+                            onchange="ChangeSelectProducto(this.value,this)" required>
+                            <option disabled selected value> -- Selecciona una opción -- </option>
+                            {{#each productos}}
+                            <option value="{{this.id}}">{{this.id}} - {{this.nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </th>
+                    <td><input type="text" id="nombre" name="nombre" disabled></td>
+                    <td><input type="number" id="precio" name="precio" value="0" disabled></td>
+                    <td>
+                        <select class="form-control" id="cantidad" name="cantidad"
+                            onchange="ChangeSelectCantidad(this.value,this)">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </td>
+                    <td><input type="number" id="costo" name="costo" value="0" disabled></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-success" onclick="AgregarProducto(); SumarTotal();">Agregar</button>
+            </div>
+            <div class="col">
+                Total: <input type="number" id="total" name="total" value="0" disabled>
+            </div>
+            <div class="col text-right">
+                <button class="btn btn-success" onclick="" type="submit">Guardar</button>
+            </div>
+        </div>
+
+
+    </form>
+
+
+
+
+</div>

@@ -1,0 +1,9 @@
+body{
+    overflow: auto;
+}
+
+.card-img-top {
+    max-width:50%;
+    width:auto;
+    height:auto;
+}

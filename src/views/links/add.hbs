@@ -1,0 +1,33 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="/products/addproduct" method="POST" enctype="multipart/form-data">
+                        
+                        <div class="form-group">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Imagen</label>
+                            <input type="file" name="imagen" class="form-control" placeholder="Imagen" accept="image/x-png">
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Modelo 3D (.fbx)</label>
+                            <input type="file" name="modelofbx" class="form-control" placeholder="Modelo 3d" accept=".fbx">
+                        </div>
+
+                        <div class="form-group">
+
+                            <button class="btn btn-success btn-block">
+                                Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
