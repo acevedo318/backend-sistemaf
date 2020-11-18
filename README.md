@@ -1,4 +1,4 @@
-## Aplicacion Node para generar facturar
+## Aplicacion Node para generar facturas
 
 
 Instalación
